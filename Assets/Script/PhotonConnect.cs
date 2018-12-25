@@ -29,9 +29,11 @@ public class PhotonConnect : MonoBehaviour
     void OnJoinedRoom()
     {
         Debug.Log("ルームへ入室しました。");
-        GameManagerScript.Instance.Player = PhotonNetwork.Instantiate(Player.name, new Vector3(0, 0, 0), transform.rotation, 0);
+
+        GameManagerScript.Instance.MinePlayer = PhotonNetwork.Instantiate(Player.name, new Vector3(0, 0, 0), transform.rotation, 0);
         if (PhotonNetwork.isMasterClient)
-            GameManagerScript.Instance.Monster = PhotonNetwork.Instantiate(Monster.name, new Vector3(0, 0.7f, 0), transform.rotation, 0);
+            GameManagerScript.Instance.Monster = PhotonNetwork.Instantiate(Monster.name, new Vector3(0, 0.01f, 0), transform.rotation, 0);
+
     }
 
     // ルームの入室に失敗すると呼ばれる

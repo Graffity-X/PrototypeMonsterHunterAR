@@ -7,8 +7,12 @@ public class GameManagerScript : SingletonMonoBehaviour<GameManagerScript>
 
     [SerializeField] private GameObject mainCamera;
 
-    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject mineplayer;
     [SerializeField] private GameObject monster;
+
+    public List<GameObject> players = new List<GameObject>();
+
+    private Vector3 position = new Vector3(0, 0, 0);
 
     public GameObject MainCamera
     {
@@ -31,18 +35,33 @@ public class GameManagerScript : SingletonMonoBehaviour<GameManagerScript>
         }
     }
 
-    public GameObject Player
+    public GameObject MinePlayer
     {
         get
         {
-            return player;
+            return mineplayer;
         }
 
         set
         {
-            player = value;
+            mineplayer = value;
         }
     }
+
+    public Vector3 Position
+    {
+        get
+        {
+            return position;
+        }
+
+        set
+        {
+            position = value;
+        }
+    }
+
+
 
     // Use this for initialization
     void Start()

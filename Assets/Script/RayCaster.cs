@@ -19,17 +19,22 @@ public class RayCaster : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
         this.UpdateAsObservable()
-            .First(l => GameManagerScript.Instance.Player != null)
+            .First(l => GameManagerScript.Instance.MinePlayer != null)
             .Subscribe(l => MonsterInit());
         // Monsterが生成されたらPhotonViewをいれる
+
+
+
     }
 
     void MonsterInit()
     {
-        PlayerPhotonView = GameManagerScript.Instance.Player.GetPhotonView();
-        player = GameManagerScript.Instance.Player.GetComponent<Player>();
+        PlayerPhotonView = GameManagerScript.Instance.MinePlayer.GetPhotonView();
+        player = GameManagerScript.Instance.MinePlayer.GetComponent<Player>();
         Debug.Log("photon view add");
+
     }
 
     // Update is called once per frame

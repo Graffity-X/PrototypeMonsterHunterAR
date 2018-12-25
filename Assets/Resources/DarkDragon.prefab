@@ -2081,9 +2081,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!64 &64588821492615438
 MeshCollider:
@@ -2315,7 +2315,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 100
   HP: 0
+  AtackTime: 0.7
   slider: {fileID: 114891888943075412}
+  FireBall: {fileID: 1601053434854514, guid: 995724b4893de41219e8791139b772a0, type: 2}
 --- !u!114 &114818701104543484
 MonoBehaviour:
   m_ObjectHideFlags: 1

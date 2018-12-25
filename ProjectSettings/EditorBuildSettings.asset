@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/GameScene.unity
+    guid: 9b3e01aff54eb4940b57e29aabaf8aa6
+  - enabled: 0
+    path: Assets/Plugins/UnityARKitPlugin/Examples/ARKit1.5/UnityARImageAnchor/UnityARImageAnchor.unity
+    guid: befc06ba4fe0046439ef5dac5a33c0e7
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/UnityARImageAnchor 1.unity
+    guid: 8fbdf44010ca14699b4c8e564d11dfb7
   m_configObjects: {}

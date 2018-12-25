@@ -3,9 +3,9 @@ using System.Collections;
 
 public class PhotonConnect : MonoBehaviour
 {
-    [SerializeField] GameObject Player;
+    [SerializeField] GameObject Player, Monster;
     int RoomCount = 0;
- 
+
     void Start()
     {
         // Photonに接続する(引数でゲームのバージョンを指定できる)
@@ -21,15 +21,17 @@ public class PhotonConnect : MonoBehaviour
 
         // ルームに入室する
         PhotonNetwork.JoinRandomRoom();
+
+
     }
 
     // ルームに入室すると呼ばれる
     void OnJoinedRoom()
     {
         Debug.Log("ルームへ入室しました。");
-
-
-
+        GameManagerScript.Instance.Player = PhotonNetwork.Instantiate(Player.name, new Vector3(0, 0, 0), transform.rotation, 0);
+        if (PhotonNetwork.isMasterClient)
+            GameManagerScript.Instance.Monster = PhotonNetwork.Instantiate(Monster.name, new Vector3(0, 0.7f, 0), transform.rotation, 0);
     }
 
     // ルームの入室に失敗すると呼ばれる

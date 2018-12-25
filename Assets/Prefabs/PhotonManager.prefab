@@ -9,31 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1724062287745198}
+  m_RootGameObject: {fileID: 1896180384051762}
   m_IsPrefabAsset: 1
---- !u!1 &1724062287745198
+--- !u!1 &1896180384051762
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4746575772867696}
-  - component: {fileID: 114791101310285508}
-  - component: {fileID: 114853577032854276}
+  - component: {fileID: 4643390835964052}
+  - component: {fileID: 114234170262786126}
   m_Layer: 0
-  m_Name: WorldOrigin
+  m_Name: PhotonManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4746575772867696
+--- !u!4 &4643390835964052
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1724062287745198}
+  m_GameObject: {fileID: 1896180384051762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,27 +40,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114791101310285508
+--- !u!114 &114234170262786126
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1724062287745198}
+  m_GameObject: {fileID: 1896180384051762}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5f9f5c8de44445b8ac964601c22376d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f52572ad32974e3e90e3949a8b33b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114853577032854276
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1724062287745198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f9ae30aecb5845929211b8b6ed449e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CreateObj:
-  - {fileID: 1896180384051762, guid: 6fb9c8d0d5cd84a7487731c41300ad1a, type: 2}
+  Player: {fileID: 1730337301647960, guid: 985eaac7c1fb2461790df7cfbff79310, type: 2}
+  Monster: {fileID: 1182191112074910, guid: d3c434700bf6744bea9d362721c29277, type: 2}

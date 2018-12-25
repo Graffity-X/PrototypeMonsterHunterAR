@@ -128,6 +128,7 @@ inline void GetARSessionConfigurationFromARKitSessionConfiguration(ARKitSessionC
     appleConfig.lightEstimationEnabled = (BOOL)unityConfig.enableLightEstimation;
 }
 
+#if ARKIT_USES_FACETRACKING
 inline void GetARFaceConfigurationFromARKitFaceConfiguration(ARKitFaceTrackingConfiguration& unityConfig, ARConfiguration* appleConfig)
 {
     appleConfig.worldAlignment = GetARWorldAlignmentFromUnityARAlignment(unityConfig.alignment);
@@ -140,8 +141,8 @@ inline void GetARFaceConfigurationFromARKitFaceConfiguration(ARKitFaceTrackingCo
             appleConfig.videoFormat = (__bridge ARVideoFormat*) unityConfig.ptrVideoFormat;
         }
     }
-
 }
+#endif
 
 static inline void GetUnityARCameraDataFromCamera(UnityARCamera& unityARCamera, ARCamera* camera)
 {
@@ -491,7 +492,7 @@ static CGAffineTransform s_CurAffineTransform;
 
     if (_getPointCloudData && frame.rawFeaturePoints != nullptr)
     {
-        unityARCamera.ptrPointCloud = (__bridge void *) frame.rawFeaturePoints;
+        unityARCamera.ptrPointCloud = (__bridge_retained void *) frame.rawFeaturePoints;
     }
     else
     {
@@ -571,6 +572,10 @@ static CGAffineTransform s_CurAffineTransform;
 
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             _frameCallback(unityARCamera);
+            if (unityARCamera.ptrPointCloud != nullptr)
+            {
+                CFRelease(unityARCamera.ptrPointCloud);
+            }
         });
     }
 
@@ -1132,6 +1137,7 @@ extern "C" void EnumerateVideoFormats(UNITY_AR_VIDEOFORMAT_CALLBACK videoFormatC
 
 extern "C" void EnumerateFaceTrackingVideoFormats(UNITY_AR_VIDEOFORMAT_CALLBACK videoFormatCallback)
 {
+#if ARKIT_USES_FACETRACKING
     if (@available(iOS 11.3, *))
     {
         for(ARVideoFormat* arVideoFormat in ARFaceTrackingConfiguration.supportedVideoFormats)
@@ -1144,6 +1150,9 @@ extern "C" void EnumerateFaceTrackingVideoFormats(UNITY_AR_VIDEOFORMAT_CALLBACK 
             videoFormatCallback(videoFormat);
         }
     }
+#else
+    [NSException raise:@"UnityARKitPluginFaceTrackingNotEnabled" format:@"UnityARKitPlugin: Checking FaceTracking video formats without enabling it in settings."];
+#endif
 }
 
 extern "C" bool Native_IsARKit_1_5_Supported()
@@ -1162,6 +1171,7 @@ extern "C" bool IsARKitFaceTrackingConfigurationSupported()
     return ARFaceTrackingConfiguration.isSupported;
 #else
     [NSException raise:@"UnityARKitPluginFaceTrackingNotEnabled" format:@"UnityARKitPlugin: Checking FaceTracking device support without enabling it in settings."];
+    return false;
 #endif
 }
 

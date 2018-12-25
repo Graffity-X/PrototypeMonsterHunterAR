@@ -7,7 +7,7 @@ public class SetOrigin : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        UnityARSessionNativeInterface.GetARSessionNativeInterface().SetWorldOrigin(transform);
+
 
 
     }

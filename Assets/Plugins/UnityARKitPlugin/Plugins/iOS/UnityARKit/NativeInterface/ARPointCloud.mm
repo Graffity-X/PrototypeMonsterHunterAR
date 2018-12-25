@@ -21,7 +21,9 @@ int pointCloud_GetCount(const void* pointCloudPtr)
 void* pointCloud_GetPointsPtr(const void* pointCloudPtr)
 {
     if (pointCloudPtr == nullptr)
+    {
         return 0;
+    }
     
     if (@available(iOS 11.0, *))
     {
@@ -38,8 +40,6 @@ void* pointCloud_GetPointsPtr(const void* pointCloudPtr)
         // Fallback on earlier versions
         return 0;
     }
-    
- 
 }
 
 void* pointCloud_GetIdentifiersPtr(const void* pointCloudPtr)

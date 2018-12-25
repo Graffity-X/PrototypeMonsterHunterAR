@@ -39,4 +39,12 @@ MonoBehaviour:
   - Damage
   - SetHP
   - DamageToMonster
+  - ColorRpc
+  - DoJump
+  - Flash
+  - Marco
+  - Polo
+  - TaggedPlayer
+  - RunAtackAnim
+  - RunAtack
   DisableAutoOpenWizard: 1
